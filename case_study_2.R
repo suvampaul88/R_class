@@ -2,6 +2,7 @@
 #install.packages("package name")
 
 library(tibble)
+library(tidyr)
 library(dplyr)
 library(broom)
 library(ggplot2)
