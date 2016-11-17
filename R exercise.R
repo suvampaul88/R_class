@@ -44,8 +44,8 @@ mean_vals1 <- element_func(mtcars, mean)
 
 #using functionals
 
-lapply(mtcars, median)
-lapply(mtcars, mean)
+sapply(mtcars, median)
+sapply(mtcars, mean)
 
 #using map functions from the purrr package
 library(purrr)

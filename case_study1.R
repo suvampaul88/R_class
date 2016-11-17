@@ -1,9 +1,12 @@
-#read in data
+#Install packages using 
+#install.packages("package name")
+#install.packages("stringr")
 
 library(stringr)
 library(tibble)
 
-setwd("~/Desktop")
+#read in data
+setwd("~/Desktop/R_class")
 data <- read.csv("data.csv")
 
 as_tibble(data)
