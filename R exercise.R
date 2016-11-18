@@ -43,7 +43,6 @@ median_vals1 <- element_func(mtcars, median)
 mean_vals1 <- element_func(mtcars, mean)
 
 #using functionals
-
 sapply(mtcars, median)
 sapply(mtcars, mean)
 
