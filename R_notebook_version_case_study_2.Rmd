@@ -1,0 +1,70 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(tibble)
+library(tidyr)
+library(dplyr)
+library(broom)
+library(ggplot2)
+```
+
+```{r}
+data(mtcars)
+names(mtcars)
+```
+
+
+Run models 
+```{r}
+results <- lm(mpg ~ ., data = mtcars)
+summary(results)
+
+td <- broom::tidy(results)
+td$conf.low <- td$estimate - td$std.error
+td$conf.high <- td$estimate + td$std.error
+```
+
+
+
+```{r}
+ggplot2::ggplot(td, aes(estimate, term, color = term)) + 
+  geom_point() + 
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high))
+```
+
+
+Subset by cyl and run models in cyl
+```{r}
+results2 <- mtcars %>% dplyr::group_by(cyl) %>%  dplyr::do(fit = lm(mpg ~ ., data = .))
+
+td <- results2 %>% broom::tidy(fit)
+
+td$conf.low <- td$estimate - td$std.error
+td$conf.high <- td$estimate + td$std.error
+```
+
+
+
+```{r}
+ggplot2::ggplot(td, aes(estimate, term, color = term)) + 
+  geom_point() + 
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high)) + 
+  facet_grid(.~cyl)
+
+```
+
+
+
+reshape data
+```{r}
+td_wide <- td %>% dplyr::select(cyl, term, estimate) %>% tidyr::spread(term, estimate)
+as_tibble(td_wide)
+```
+
