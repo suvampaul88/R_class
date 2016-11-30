@@ -1,6 +1,8 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  html_document: default
+  html_notebook: default
 ---
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
@@ -13,6 +15,8 @@ library(tidyr)
 library(dplyr)
 library(broom)
 library(ggplot2)
+
+setwd("~/Desktop/R_class/case study 3")
 ```
 
 ```{r}

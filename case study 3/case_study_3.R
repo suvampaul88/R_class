@@ -7,6 +7,9 @@ library(dplyr)
 library(broom)
 library(ggplot2)
 
+#set directory
+setwd("~/Desktop/R_class/case study 3")
+
 #look at data
 data(mtcars)
 names(mtcars)
