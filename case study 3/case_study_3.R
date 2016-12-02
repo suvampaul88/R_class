@@ -1,5 +1,6 @@
 #Install packages using 
 #install.packages("package name")
+#e.g. install.packages("tibble")
 
 library(tibble)
 library(tidyr)
@@ -9,6 +10,7 @@ library(ggplot2)
 
 #set directory
 setwd("~/Desktop/R_class/case study 3")
+#getwd()
 
 #look at data
 data(mtcars)

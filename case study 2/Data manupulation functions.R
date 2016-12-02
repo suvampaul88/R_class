@@ -7,6 +7,9 @@
 #helpful paper: https://www.jstatsoft.org/article/view/v040i01
 
 
+#read about functions in R here: 
+#http://adv-r.had.co.nz/Functions.html
+
 
 #set directory
 setwd("~/Desktop/R_class/case study 2")
