@@ -14,11 +14,13 @@ as_tibble(data)
 
 #get var name before the first underscore
 loc <- str_locate(data$question, "_")
+loc[, "start"]
 str_sub(data$question, 1, loc[, "start"] -1)
 
 
 #get var name that's between two underscores
 loc2 <- str_locate_all(data$question, "_")
+unlist((lapply(loc2, "[[", 1)))
 str_sub(data$question,  unlist((lapply(loc2, "[[", 1))) + 1, unlist((lapply(loc2, "[[", 2))) - 1)
 
 
